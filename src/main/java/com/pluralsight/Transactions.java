@@ -19,6 +19,7 @@ public class Transactions {
         this.vendor = vendor;
         this.amount = amount;
     }
+
     public LocalDate getDate(){
         return transactionDate;
     }
@@ -34,6 +35,7 @@ public class Transactions {
     public Double getAmount(){
         return amount;
     }
+
     @Override
     public String toString(){
         //I found a simpler way to write this instead of using something like: ("#%-10d %-18s %10.2f", id,name,price);

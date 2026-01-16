@@ -237,7 +237,7 @@ public class Main {
         }
     }
 
-    
+
     private static void viewMonthToDate(){
 
         LocalDate today = LocalDate.now();
