@@ -11,31 +11,25 @@ import java.util.Scanner;
 
 public class Main {
 
-    // hunbals changes
-
     public static ArrayList<Transactions> transactionHistory = getTransactionFromFile();
 
     //━━━━━━━━━━━━━━━━━━━━⊱⋆Main Menu and Choices⋆⊰━━━━━━━━━━━━━━━━━━━━
     public static void main(String[] args) {
-        System.out.println(
-                "╭──────────────────────.★..───╮\n" +
-                "  Welcome to Fairy's Treasury\n" +
-                "╰───..★.──────────────────────╯\n");
+        System.out.println("""
+                ╭──────────────────────.★..───╮\n 
+                  Welcome to Fairy's Treasury\n 
+                ╰───..★.──────────────────────╯\n
+                You push open the wooden door of a cozy little shop...\n 
+                A bell jingles, and a fairy clerk flutters over with a smile.\n""");
 
-        System.out.println(
-                "You push open the wooden door of a cozy little shop...\n" +
-                "A bell jingles, and a fairy clerk flutters over with a smile.\n");
-
-        String mainMenu =
-                "━━━━━━━━━━━━━━━━━━━━⊱⋆⊰━━━━━━━━━━━━━━━━━━━━\n" +
-                "⋆｡ﾟ☁｡⋆☾｡ The Enchanted Counter ⋆｡ﾟ☁｡⋆｡☾\n" +
-                "D) Add Treasure Deposit\n" +
-                "P) Make Treasure Payment\n" +
-                "L) Treasury of Trades (Ledger)\n" +
-                "X) Exit\n" +
-                "━━━━━━━━━━━━━━━━━━━━⊱⋆⊰━━━━━━━━━━━━━━━━━━━━\n";
-
-
+        String mainMenu = """
+                ━━━━━━━━━━━━━━━━━━━━⊱⋆⊰━━━━━━━━━━━━━━━━━━━━\n 
+                ⋆｡ﾟ☁｡⋆☾｡ The Enchanted Counter ⋆｡ﾟ☁｡⋆｡☾\n 
+                D) Add Treasure Deposit\n
+                P) Make Treasure Payment\n
+                L) Treasury of Trades (Ledger)\n
+                X) Exit\n
+                ━━━━━━━━━━━━━━━━━━━━⊱⋆⊰━━━━━━━━━━━━━━━━━━━━\n""";
 
         while (true) {
             System.out.print(mainMenu);
@@ -44,24 +38,20 @@ public class Main {
             command = ConsoleHelper.promptForChar("'What service do you seek today traveler?'\n" + "You");
 
             switch (command) {
-                case 'D':
-                    addDeposit();//go to deposit
-                    break;
-                case 'P':
-                    makePayment();//go make payment
-                    break;
-                case 'L':
-                    goToLedger();//go to ledger screen
-                    break;
-                case 'X': //exit
-                    return;
-                default:
-                    System.out.println("'We don't have that service here...'");
-                    break;
-
+                case 'D'->
+                        addDeposit();//go to deposit
+                case 'P'->
+                        makePayment();//go make payment
+                case 'L'->
+                        goToLedger();//go to ledger screen
+                case 'X' -> { //exit
+                    return;}
+                default->
+                        System.out.println("'We don't have that service here...'");
             }
         }
     }
+
     private static void addDeposit() {
         String description = ConsoleHelper.promptForString
         ("'Ah, adding to your treasures, are we?'\n" +
@@ -165,23 +155,18 @@ public class Main {
             ("Your wish is the fairy's command - which entries shall we reveal?\n" + "You");
 
             switch (command) {
-                case 'A':
-                    viewAllLedger();//see all together
-                    break;
-                case 'D':
-                    viewDeposits();//go to deposit
-                    break;
-                case 'P':
-                    viewPayments();//go to payments
-                    break;
-                case 'R':
-                    viewReports();//go to reports
-                    break;
-                case 'H':
-                    return;
-                default:
-                    System.out.println("That isn't something I can do...");
-                    break;
+                case 'A'->
+                        viewAllLedger();//see all together
+                case 'D'->
+                        viewDeposits();//go to deposit
+                case 'P'->
+                        viewPayments();//go to payments
+                case 'R'->
+                        viewReports();//go to reports
+                case 'H'-> {
+                    return;}
+                default->
+                        System.out.println("That isn't something I can do...");
             }
         }
     }
@@ -232,29 +217,24 @@ public class Main {
             ("Speak your desire, and the Archives shall shimmer with the results.\n" + "You");
 
             switch (command) {
-                case 1:
-                    viewMonthToDate();//see all together
-                    break;
-                case 2:
-                    viewPreviousMonth();//go to deposit
-                    break;
-                case 3:
-                    viewYearToDate();//go to payments
-                    break;
-                case 4:
-                    viewPreviousYear();//go to reports
-                    break;
-                case 5:
-                    searchByVendor();//type in vendor
-                    break;
-                case 0:
-                    return;
-                default:
-                    System.out.println("I'm not sure what to do with that...");
-                    break;
+                case 1->
+                        viewMonthToDate();//see all together
+                case 2->
+                        viewPreviousMonth();//go to deposit
+                case 3->
+                        viewYearToDate();//go to payments
+                case 4->
+                        viewPreviousYear();//go to reports
+                case 5->
+                        searchByVendor();//type in vendor
+                case 0-> {
+                    return;}
+                default->
+                        System.out.println("I'm not sure what to do with that...");
             }
         }
     }
+
     private static void viewMonthToDate(){
 
         LocalDate today = LocalDate.now();
@@ -264,8 +244,7 @@ public class Main {
                 System.out.println(t);    // Print the transaction details if it matches the current year
             }
         }
-        System.out.println();
-        System.out.println("The fairy's scroll has revealed every coin and trade from this moon cycle.");
+        System.out.println("\nThe fairy's scroll has revealed every coin and trade from this moon cycle.");
     }
     private static void viewPreviousMonth(){
 
@@ -277,8 +256,7 @@ public class Main {
                 System.out.println(t);
             }
         }
-        System.out.println();
-        System.out.println("The fairy's scroll has revealed every coin and trade from the last moon cycle.");
+        System.out.println("\nThe fairy's scroll has revealed every coin and trade from the last moon cycle.");
     }
     private static void viewYearToDate(){
 
@@ -288,8 +266,7 @@ public class Main {
                 System.out.println(t);
             }
         }
-        System.out.println();
-        System.out.println("Every coin and trade from this year sparkles before you - what a treasure trove!");
+        System.out.println("\nEvery coin and trade from this year sparkles before you - what a treasure trove!");
     }
     private static void viewPreviousYear(){
 
@@ -299,8 +276,7 @@ public class Main {
                 System.out.println(t);
             }
         }
-        System.out.println();
-        System.out.println("Every coin and trade from last year sparkles before you - what a treasure trove!");
+        System.out.println("\nEvery coin and trade from last year sparkles before you - what a treasure trove!");
 
     }
     private static void searchByVendor(){
